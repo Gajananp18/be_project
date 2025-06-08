@@ -67,6 +67,7 @@ export default function Login() {
   return (
     <Box
       sx={{
+<<<<<<< HEAD
         
         minHeight: "100vh",
         background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
@@ -74,6 +75,14 @@ export default function Login() {
         justifyContent: "center",
         alignItems: "center",
         
+=======
+        width: '100vw',
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+>>>>>>> cbd582e666b99e6dc5c527f6a8089c2255fd6477
       }}
     >
       <motion.div
@@ -84,6 +93,7 @@ export default function Login() {
         <Paper
           elevation={0}
           sx={{
+<<<<<<< HEAD
             width: "420px",
             padding: "50px",
             borderRadius: "16px",
@@ -91,6 +101,15 @@ export default function Login() {
             backdropFilter: "blur(20px)",
             border: "1px solid rgba(255, 255, 255, 0.3)",
             boxShadow: "0 8px 30px rgba(0, 0, 0, 0.1)",
+=======
+            width: '420px',
+            padding: '50px',
+            borderRadius: '16px',
+            background: 'rgba(255, 255, 255, 0.9)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(255, 255, 255, 0.3)',
+            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.1)',
+>>>>>>> cbd582e666b99e6dc5c527f6a8089c2255fd6477
           }}
         >
           <Typography
@@ -119,7 +138,11 @@ export default function Login() {
           <Box
             component="form"
             onSubmit={handleLogin}
+<<<<<<< HEAD
             sx={{ display: 'flex', flexDirection: 'column', gap:  }}
+=======
+            sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
+>>>>>>> cbd582e666b99e6dc5c527f6a8089c2255fd6477
           >
             <TextField
               label="Email Address"

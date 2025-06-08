@@ -23,7 +23,11 @@ const teamMembers = [
     role: 'AI/ML Engineering Lead',
     description: 'Advanced expertise in Natural Language Processing and machine learning systems, focusing on developing innovative solutions for automated document analysis.',
     image: pandeImage,
+<<<<<<< HEAD
   }
+=======
+  },
+>>>>>>> cbd582e666b99e6dc5c527f6a8089c2255fd6477
 ];
 
 export default function AboutUs() {
@@ -42,9 +46,15 @@ export default function AboutUs() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
+<<<<<<< HEAD
           <Typography
             variant="h2"
             sx={{
+=======
+          <Typography 
+            variant="h2" 
+            sx={{ 
+>>>>>>> cbd582e666b99e6dc5c527f6a8089c2255fd6477
               fontWeight: 800,
               color: '#1a237e',
               textAlign: 'center',
@@ -54,9 +64,15 @@ export default function AboutUs() {
           >
             Leadership Team
           </Typography>
+<<<<<<< HEAD
           <Typography
             variant="h6" 
             sx={{
+=======
+          <Typography 
+            variant="h6" 
+            sx={{ 
+>>>>>>> cbd582e666b99e6dc5c527f6a8089c2255fd6477
               color: '#455a64',
               textAlign: 'center',
               mb: 8,

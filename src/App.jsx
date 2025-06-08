@@ -14,7 +14,10 @@ import NavBar from './NavBar';
 import Dashboard from './Dashboard';
 import SendOtpPage from './SendOtpPage';
 import VerifyOtpPage from './VerifyOtpPage';
+<<<<<<< HEAD
 import Features from './Features';
+=======
+>>>>>>> cbd582e666b99e6dc5c527f6a8089c2255fd6477
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -31,7 +34,11 @@ function App() {
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/SendOtpPage" element={<SendOtpPage />} /> 
         <Route path="/verifyOtp" element={<VerifyOtpPage />} />
+<<<<<<< HEAD
         <Route path="/features" element={<Features />} />
+=======
+
+>>>>>>> cbd582e666b99e6dc5c527f6a8089c2255fd6477
       </Routes>
     </Router>
   );

@@ -57,6 +57,7 @@ const mockUserData = {
 
 export default function Dashboard() {
   const [loading, setLoading] = useState(true);
+<<<<<<< HEAD
   const [uploadDetails, setUploadDetails] = useState({
     resume: null,
     jobDescription: null
@@ -65,6 +66,12 @@ export default function Dashboard() {
   const [userProfile, setUserProfile] = useState(null);
   const fileInputRef = useRef(null);
   const jobDescInputRef = useRef(null);
+=======
+  const [uploadDetails, setUploadDetails] = useState(null);
+  const [snackbar, setSnackbar] = useState({ open: false, message: "", severity: "success" });
+  const [userProfile, setUserProfile] = useState(null);
+  const fileInputRef = useRef(null);
+>>>>>>> cbd582e666b99e6dc5c527f6a8089c2255fd6477
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -116,7 +123,11 @@ export default function Dashboard() {
     }
   };
 
+<<<<<<< HEAD
   const handleFileChange = (event, type) => {
+=======
+  const handleFileChange = async (event) => {
+>>>>>>> cbd582e666b99e6dc5c527f6a8089c2255fd6477
     const file = event.target.files[0];
     if (!file) return;
 
@@ -128,6 +139,7 @@ export default function Dashboard() {
       return showSnackbar("Only PDF files are allowed.", "error");
     }
 
+<<<<<<< HEAD
     // Show file details
     setUploadDetails(prev => ({
       ...prev,
@@ -138,6 +150,43 @@ export default function Dashboard() {
       }
     }));
     showSnackbar(`${type === 'resume' ? 'Resume' : 'Job Description'} selected successfully!`, "success");
+=======
+    const formData = new FormData();
+    formData.append("file", file);
+    const token = localStorage.getItem("token");
+
+    try {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/ats/generate-ats`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setUploadDetails({
+          name: file.name,
+          size: (file.size / 1024).toFixed(2) + " KB",
+          uploadedAt: new Date().toLocaleString(),
+        });
+        updateUserActivity("Resume uploaded");
+        showSnackbar("Resume uploaded and processed!", "success");
+      } else {
+        if (res.status === 401) {
+          showSnackbar("Session expired. Please login again.", "error");
+          handleLogout();
+        } else {
+          showSnackbar("Upload failed. Try again.", "error");
+        }
+      }
+    } catch (err) {
+      console.error(err);
+      showSnackbar("Server error. Try again later.", "error");
+    }
+>>>>>>> cbd582e666b99e6dc5c527f6a8089c2255fd6477
   };
 
   const showSnackbar = (message, severity) => {
@@ -159,11 +208,16 @@ export default function Dashboard() {
   };
 
   const handleUploadResume = () => {
+<<<<<<< HEAD
     fileInputRef.current.click();
   };
 
   const handleUploadJobDescription = () => {
     jobDescInputRef.current.click();
+=======
+    // Implement resume upload logic
+    console.log("Upload resume clicked");
+>>>>>>> cbd582e666b99e6dc5c527f6a8089c2255fd6477
   };
 
   if (loading || !userProfile) {
@@ -193,7 +247,11 @@ export default function Dashboard() {
           </Toolbar>
         </AppBar>
 
+<<<<<<< HEAD
         <Box sx={{ mb: 6, mt: 4 }}>
+=======
+        <Box sx={{ mb: 4 }}>
+>>>>>>> cbd582e666b99e6dc5c527f6a8089c2255fd6477
           <Grid container alignItems="center" spacing={2}>
             <Grid item>
               <Avatar
@@ -208,7 +266,11 @@ export default function Dashboard() {
               </Avatar>
             </Grid>
             <Grid item>
+<<<<<<< HEAD
               <Typography variant="h4" sx={{ fontWeight: 600, mb: 1 }}>
+=======
+              <Typography variant="h4" sx={{ fontWeight: 600 }}>
+>>>>>>> cbd582e666b99e6dc5c527f6a8089c2255fd6477
                 Welcome back, {userProfile.name}
               </Typography>
               <Typography variant="subtitle1" color="text.secondary">
@@ -336,6 +398,7 @@ export default function Dashboard() {
                 <Grid item xs={12}>
                   <Button
                     fullWidth
+<<<<<<< HEAD
                     variant="contained"
                     startIcon={<Description />}
                     onClick={handleUploadJobDescription}
@@ -347,6 +410,8 @@ export default function Dashboard() {
                 <Grid item xs={12}>
                   <Button
                     fullWidth
+=======
+>>>>>>> cbd582e666b99e6dc5c527f6a8089c2255fd6477
                     variant="outlined"
                     startIcon={<Assessment />}
                     sx={{ py: 1.5 }}
@@ -354,6 +419,7 @@ export default function Dashboard() {
                     Run Analysis
                   </Button>
                 </Grid>
+<<<<<<< HEAD
               </Grid>
 
               {(uploadDetails.resume || uploadDetails.jobDescription) && (
@@ -394,6 +460,19 @@ export default function Dashboard() {
                   )}
                 </Box>
               )}
+=======
+                <Grid item xs={12}>
+                  <Button
+                    fullWidth
+                    variant="outlined"
+                    startIcon={<TrendingUp />}
+                    sx={{ py: 1.5 }}
+                  >
+                    View Job Matches
+                  </Button>
+                </Grid>
+              </Grid>
+>>>>>>> cbd582e666b99e6dc5c527f6a8089c2255fd6477
             </Paper>
           </Grid>
         </Grid>
@@ -402,6 +481,7 @@ export default function Dashboard() {
           type="file"
           ref={fileInputRef}
           style={{ display: "none" }}
+<<<<<<< HEAD
           onChange={(e) => handleFileChange(e, 'resume')}
           accept=".pdf"
         />
@@ -424,6 +504,42 @@ export default function Dashboard() {
           </Alert>
         </Snackbar>
       </Container>
+=======
+          onChange={handleFileChange}
+          accept=".pdf"
+        />
+
+        {uploadDetails && (
+          <Box
+            sx={{
+              mt: 4,
+              backgroundColor: "#e3f2fd",
+              borderRadius: "10px",
+              p: 3,
+              display: "inline-block",
+              textAlign: "left",
+            }}
+          >
+            <Typography sx={{ fontWeight: "bold" }}>
+              📄 {uploadDetails.name}
+            </Typography>
+            <Typography>📏 {uploadDetails.size}</Typography>
+            <Typography>⏱ {uploadDetails.uploadedAt}</Typography>
+          </Box>
+        )}
+      </Container>
+
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={4000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} sx={{ width: "100%" }}>
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
+>>>>>>> cbd582e666b99e6dc5c527f6a8089c2255fd6477
     </Box>
   );
 }
